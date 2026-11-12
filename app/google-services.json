@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "309850170893",
+    "project_id": "gen-lang-client-0772266463",
+    "storage_bucket": "gen-lang-client-0772266463.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309850170893:android:873b4b81882ab6eb229744",
+        "android_client_info": {
+          "package_name": "com.aistudio.vyora.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309850170893-81oma5snrrvbo5p48k4j3lumojmg8gum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aistudio.vyora.app",
+            "certificate_hash": "d5099b0efe76e68c260bae148958eaa344e02bdc"
+          }
+        },
+        {
+          "client_id": "309850170893-1dieptcmchq46v1g97j38dnj0d4jvc18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJgI1C3PenVTF-NSOAbhqxAOukomUITP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309850170893-1dieptcmchq46v1g97j38dnj0d4jvc18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

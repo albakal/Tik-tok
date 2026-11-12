@@ -1,0 +1,113 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and stats",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "photoUrl": { "type": "string", "description": "Profile photo URL" },
+        "role": { "type": "string", "description": "User role: super_admin, moderator, or user" },
+        "isBanned": { "type": "boolean", "description": "Whether user is banned from the platform" },
+        "followersCount": { "type": "number", "description": "Total followers count" },
+        "followingCount": { "type": "number", "description": "Total following count" },
+        "likesCount": { "type": "number", "description": "Total received likes count" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp via FieldValue.serverTimestamp()" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Update timestamp via FieldValue.serverTimestamp()" }
+      },
+      "required": ["uid", "email", "displayName", "role", "isBanned", "createdAt"]
+    },
+    "Video": {
+      "title": "Video",
+      "description": "Short video post shared with the community",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique video document ID" },
+        "authorId": { "type": "string", "description": "Creator user UID" },
+        "authorName": { "type": "string", "description": "Creator display name" },
+        "authorPhotoUrl": { "type": "string", "description": "Creator avatar URL" },
+        "videoUrl": { "type": "string", "description": "Cloud video stream URL" },
+        "description": { "type": "string", "description": "Video caption or description" },
+        "category": { "type": "string", "description": "Feed category: community, foryou, friends" },
+        "viewsCount": { "type": "number", "description": "Total view count" },
+        "likesCount": { "type": "number", "description": "Total like count" },
+        "commentsCount": { "type": "number", "description": "Total comment count" },
+        "sharesCount": { "type": "number", "description": "Total share count" },
+        "isBlocked": { "type": "boolean", "description": "Whether video was blocked or removed by admin" },
+        "adminWatermark": { "type": "string", "description": "Optional admin moderation watermark" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp via FieldValue.serverTimestamp()" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Update timestamp via FieldValue.serverTimestamp()" }
+      },
+      "required": ["authorId", "authorName", "videoUrl", "category", "isBlocked", "createdAt"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "Comment on a video post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique comment ID" },
+        "videoId": { "type": "string", "description": "Target video ID" },
+        "authorId": { "type": "string", "description": "Commenter UID" },
+        "authorName": { "type": "string", "description": "Commenter display name" },
+        "authorPhotoUrl": { "type": "string", "description": "Commenter avatar URL" },
+        "content": { "type": "string", "description": "Text comment content" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp via FieldValue.serverTimestamp()" }
+      },
+      "required": ["videoId", "authorId", "authorName", "content", "createdAt"]
+    },
+    "LiveStream": {
+      "title": "LiveStream",
+      "description": "Live streaming room",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Stream document ID" },
+        "hostId": { "type": "string", "description": "Host user UID" },
+        "hostName": { "type": "string", "description": "Host display name" },
+        "hostAvatar": { "type": "string", "description": "Host avatar URL" },
+        "title": { "type": "string", "description": "Live stream title" },
+        "viewerCount": { "type": "number", "description": "Active viewer count" },
+        "isActive": { "type": "boolean", "description": "Stream active status" },
+        "startedAt": { "type": "string", "format": "date-time", "description": "Start timestamp via FieldValue.serverTimestamp()" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Update timestamp via FieldValue.serverTimestamp()" }
+      },
+      "required": ["hostId", "hostName", "title", "isActive", "startedAt"]
+    },
+    "Moderator": {
+      "title": "Moderator",
+      "description": "Moderator assigned by Super Admin",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Moderator UID" },
+        "email": { "type": "string", "description": "Moderator email address" },
+        "permissions": { "type": "array", "description": "List of granted moderation permissions" },
+        "assignedBy": { "type": "string", "description": "Super admin UID who assigned this moderator" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Assignment timestamp via FieldValue.serverTimestamp()" }
+      },
+      "required": ["uid", "email", "assignedBy", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles and account data"
+    },
+    "/videos/{videoId}": {
+      "schema": "Video",
+      "description": "Published community videos"
+    },
+    "/comments/{commentId}": {
+      "schema": "Comment",
+      "description": "Video comments"
+    },
+    "/live_streams/{streamId}": {
+      "schema": "LiveStream",
+      "description": "Live broadcast streaming sessions"
+    },
+    "/moderators/{modId}": {
+      "schema": "Moderator",
+      "description": "Platform moderators and assigned permissions"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "VYORA",
+  "description": "منصة تواصل اجتماعي للفيديوهات القصيرة والبث المباشر",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
